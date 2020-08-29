@@ -22,5 +22,21 @@ console.log('abbe');
 palindrome('abbe')
 
 const fizzBuzz = n => {
-    
+    for (let i = 0; i <= n; i++){
+        i % 3 === 0
+        ?
+            i % 5 === 0
+            ?
+            console.log('fizzbuzz')
+            :
+            console.log('fizz')
+        :
+        i % 5 === 0 
+        ?
+        console.log('buzz')
+        :
+        console.log(i)
+    }
 }
+
+fizzBuzz(15)
