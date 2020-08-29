@@ -86,8 +86,73 @@ const fibonacci = n => {
         i++; 
     }
     console.log(sequence);
-    console.log(sequence[n+1]);
+    console.log(sequence[n]);
 }
 
-fibonacci(3); 
-fibonacci(50); 
+// fibonacci(10); 
+
+const mergeSort = array => {
+    if (array.length <= 1){
+        return array 
+    }else{
+        const middle = Math.floor(array.length/2); 
+        const left = array.slice(0,middle); 
+        const right = array.slice(middle); 
+        return merge(mergeSort(left),mergeSort(right)); 
+    }
+}
+
+const merge = (left, right) => {
+    let leftIndex = 0; 
+    let rightIndex = 0; 
+    let returnArray = []; 
+    // use while loop to make sure we don't stop until one of the array indexes has been reached 
+    while(leftIndex < left.length && rightIndex < right.length){
+        if (left[leftIndex] < right[rightIndex]){
+            returnArray.push(left[leftIndex]);
+            leftIndex++;
+        }else{
+            returnArray.push(right[rightIndex]);
+            rightIndex++; 
+        }
+    }
+    // concat once one limit has been reached 
+    console.log(returnArray.concat(left).concat(right));
+    return returnArray.concat(left).concat(right)
+}
+
+let exampleArray = []; 
+for (let i = 0; i < 10; i++){
+    exampleArray.push(Math.floor(Math.random()*10))
+}
+
+// mergeSort(exampleArray)
+
+const binarySearch = (array, item) => {
+    // check to see if the array is too short 
+    if (array.length <=1 ){
+        if (array[0] === item){
+            console.log(true);
+            return true
+        }else{
+            console.log(false);
+            return false 
+        }
+    }else{
+
+        // split array in half and see if its middle value is what we're looking for 
+        const middle = Math.floor(array.length/2); 
+        if (array[middle] === item){
+            console.log(array[middle]);
+            console.log(true);
+            return true 
+        }else if(array[middle] < item){
+            return binarySearch(array.slice(middle),item)
+        }else {
+            return binarySearch(array.slice(0,middle), item)
+        }
+    }
+}
+
+
+binarySearch([11,1,1,1,2,1], 1)
