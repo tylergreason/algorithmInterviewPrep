@@ -77,3 +77,17 @@ const wordObject = word => {
     }
     return returnObject;
 }
+
+const fibonacci = n => {
+    let sequence = [0,1]; 
+    let i = 0; 
+    while (i < n){
+        sequence.push(sequence[i] + sequence[i+1])
+        i++; 
+    }
+    console.log(sequence);
+    console.log(sequence[n+1]);
+}
+
+fibonacci(3); 
+fibonacci(50); 
